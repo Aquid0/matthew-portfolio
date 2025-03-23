@@ -9,7 +9,8 @@ const HomePanel = () => {
     </p>,
   ];
 
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(0)
+  ;
 
   useEffect(() => {
     const interval = setInterval(() => {
