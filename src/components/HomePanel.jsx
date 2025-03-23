@@ -11,9 +11,8 @@ const HomePanel = () => {
 
   const [current, setCurrent] = useState(0);
 
-  const x = 1
-  ;
-  
+  const x = 1;
+  const y = 2;
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % subtitles.length);
