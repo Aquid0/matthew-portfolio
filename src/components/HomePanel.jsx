@@ -63,7 +63,7 @@ const HomePanel = () => {
         </div>
 
         {/* Socials */}
-        <div className="flex items-center gap-4 mt-90">
+        <div className="flex items-center gap-5 mt-80">
           <a
             href="https://github.com/Aquid0"
             target="_blank"

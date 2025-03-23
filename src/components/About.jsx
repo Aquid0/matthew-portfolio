@@ -1,10 +1,13 @@
 const About = () => {
   return (
-    <div>
-      <h1 className="text-4xl font-bold">About</h1>
-      <p className="text-lg">
-        I am a software engineer with a passion for building scalable and
-        efficient systems.
+    <div className="w-200">
+      <h1 className="font-bold text-lg">About</h1>
+      <p className="text-gray-900">
+        I'm a computer science student at the{' '}
+        <span className="font-medium">University of Bath</span>, currently
+        preparing for my Front-End Engineer internship at Amazon (Veeqo), where
+        I'll be working with Amazon's Shipping and Inventory Management
+        Software.
       </p>
     </div>
   );
