@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "tailwind": "tailwindcss",
-    "format": "prettier --write .",
+    "prettier": "prettier --write .",
     "prepare": "husky install"
   },
   "dependencies": {

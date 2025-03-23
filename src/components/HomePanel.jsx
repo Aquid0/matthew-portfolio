@@ -24,10 +24,10 @@ const HomePanel = () => {
       <div>
         {/* Name and Title */}
         <h1 className="text-6xl font-bold">Matthew La</h1>
-        <p className="font-semibold">Front End Engineer Intern</p>
+        <p className="font-semibold mt-3 text-lg">Front End Engineer Intern</p>
 
         {/* Fading Subtitles */}
-        <div className="relative h-[60px] mt-1">
+        <div className="relative h-[60px] mt-3">
           {subtitles.map((subtitle, index) => (
             <div
               key={index}
