@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react"; 
-import githubIcon from "/assets/github.svg";
-import linkedinIcon from "/assets/linkedin.svg";
-import emailIcon from "/assets/email.svg";
 
 const HomePanel = () => {
     const subtitles = [
