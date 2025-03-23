@@ -6,10 +6,10 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello World</h1>
+    <div className="flex justify-center items-center h-screen w-screen">
       <HomePanel />
-    </>
+      <div className="w-200 h-200 bg-red-500"></div>
+    </div>
   )
 }
 
