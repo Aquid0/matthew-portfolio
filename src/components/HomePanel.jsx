@@ -18,11 +18,10 @@ const HomePanel = () => {
     }, [subtitles]);
 
     return (
-        <div className="w-150 h-200 flex p-10 flex-col justify-between">
+        <div className="w-150 h-200 flex px-10 flex-col justify-between">
             <div>
                 {/* Name and Title */}
-                <h2 className="underline">Hi! My name is</h2>
-                <h1 className="text-7xl font-bold">Matthew La.</h1>
+                <h1 className="text-7xl font-bold">Matthew La</h1>
                 <p className="font-semibold italic">Front End Engineer Intern</p>
 
                 {/* Fading Subtitles */}
