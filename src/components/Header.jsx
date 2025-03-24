@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 const Header = () => {
   const subtitles = [
-    <p>Aspiring Software Engineer</p>,
-    <p>Undergraduate at the University of Bath</p>,
+    <p>Aspiring Software Engineer.</p>,
+    <p>Undergraduate at the University of Bath.</p>,
     <p>
-      Currently working on: <strong>Portfolio Website</strong>
+      Currently working on: <strong>Portfolio Website.</strong>
     </p>,
   ];
 

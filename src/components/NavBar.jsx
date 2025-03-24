@@ -20,21 +20,19 @@ const NavBar = () => {
         <div className="w-px h-7 bg-black"></div>
         (Current Page)
       </div>
-      <div className="col-start-7 flex items-center justify-center border-black italic">
+
+      <div className="italic col-start-6 col-span-4 flex items-center justify-center gap-45">
         <a href="#" className="hover:underline">
           .01 About
         </a>
-      </div>
-      <div className="flex items-center justify-center border-black italic">
         <a href="#" className="hover:underline">
           .02 Experience
         </a>
-      </div>
-      <div className="flex items-center justify-center border-black italic">
         <a href="#" className="hover:underline">
           .03 Projects
         </a>
       </div>
+
       <div className="relative flex items-center justify-center italic">
         <div className="absolute left-0 top-0 h-screen w-px bg-black" />
         Based in UK
