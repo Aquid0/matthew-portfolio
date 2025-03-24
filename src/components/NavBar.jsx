@@ -1,8 +1,16 @@
+import React, { useState, useEffect } from 'react';
+
 const NavBar = () => {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    setInterval(() => setTime(new Date()), 1000);
+  }, []);
+
   return (
     <div className="grid grid-cols-10 gap-0 h-13 border-b border-black uppercase">
       <div className="relative flex items-center justify-center border-black italic">
-        23:25:00 GMT
+        {time.toLocaleTimeString()} GMT
         <div className="absolute right-0 top-0 h-screen w-px bg-black" />
       </div>
       <div className="col-span-2 flex items-center border-black italic gap-10 ml-10">
