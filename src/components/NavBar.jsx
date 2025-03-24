@@ -18,7 +18,7 @@ const NavBar = () => {
           Index
         </a>
         <div className="w-px h-7 bg-black"></div>
-        About
+        (Current Page)
       </div>
       <div className="col-start-7 flex items-center justify-center border-black italic">
         <a href="#" className="hover:underline">

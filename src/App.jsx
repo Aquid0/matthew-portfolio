@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <NavBar />
-      {/* <Header /> */}
+      <Header />
     </div>
   );
 }
