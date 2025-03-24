@@ -14,7 +14,7 @@ const NavBar = () => {
         <div className="absolute right-0 top-0 h-screen w-px bg-black" />
       </div>
       <div className="col-span-2 flex items-center border-black gap-10 ml-10">
-        <a href="#" className="hover:underline">
+        <a href="#" className="relative no-underline animated-underline">
           Index
         </a>
         <div className="w-px h-4 bg-black"></div>
@@ -22,13 +22,13 @@ const NavBar = () => {
       </div>
 
       <div className="col-start-6 col-span-4 flex items-center justify-center gap-45">
-        <a href="#" className="hover:underline">
+        <a href="#" className="relative no-underline animated-underline">
           .01 About
         </a>
-        <a href="#" className="hover:underline">
+        <a href="#" className="relative no-underline animated-underline">
           .02 Experience
         </a>
-        <a href="#" className="hover:underline">
+        <a href="#" className="relative no-underline animated-underline">
           .03 Projects
         </a>
       </div>
