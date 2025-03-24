@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import FadeInText from './FadeInText';
 
 const NavBar = () => {
   const [time, setTime] = useState(new Date());
@@ -49,7 +50,7 @@ const NavBar = () => {
         <motion.div
           initial={{ scaleY: 0, originY: 0 }}
           animate={{ scaleY: 1 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
+          transition={{ duration: 1, ease: 'easeOut', delay: 0.5 }}
           className="absolute left-0 top-0 h-screen w-px bg-black"
         />
         Based in UK
