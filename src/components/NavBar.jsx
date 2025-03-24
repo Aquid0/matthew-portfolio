@@ -8,7 +8,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-10 gap-0 h-10 border-b border-black uppercase italic font-mono">
+    <div className="grid grid-cols-10 gap-0 h-12 border-b border-black uppercase italic font-mono">
       <div className="relative flex items-center justify-center border-black">
         {time.toLocaleTimeString()} GMT
         <div className="absolute right-0 top-0 h-screen w-px bg-black" />
