@@ -7,7 +7,7 @@ const About = () => {
         <span className="font-medium">University of Bath</span>, currently
         preparing for my Front-End Engineer internship at{' '}
         <span className="font-medium">Amazon</span>, where I'll be working on
-        their Shipping and Inventory Management Software with the Veeqo team.
+        their Shipping and Inventory Management Systems with the Veeqo team.
       </p>
     </div>
   );
