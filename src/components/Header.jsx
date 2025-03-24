@@ -1,27 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import FadeInText from './FadeInText';
 
 const Header = () => {
   const subtitles = [
-    <p>Aspiring Software Engineer.</p>,
-    <p>Undergraduate at the University of Bath.</p>,
-    <p>
-      Currently working on: <strong>Portfolio Website.</strong>
-    </p>,
+    'Aspiring Software Engineer.',
+    'Undergraduate at the University of Bath.',
+    'Currently working on: Portfolio Website.',
   ];
 
   const [current, setCurrent] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
+    const initialDelay = isFirstRender.current ? 2500 : 0;
+
     const interval = setInterval(() => {
-      setIsVisible(false); // Start fade out
+      setIsAnimating(true);
       setTimeout(() => {
         setCurrent((prev) => (prev + 1) % subtitles.length);
-        setIsVisible(true); // Start fade in
-      }, 600); // Wait for fade out to complete
-    }, 5000);
+        setTimeout(() => {
+          setIsAnimating(false);
+        }, 750);
+      }, 1000);
+    }, 7500);
+
+    if (isFirstRender.current) {
+      setTimeout(() => {
+        isFirstRender.current = false;
+      }, initialDelay);
+    }
 
     return () => clearInterval(interval);
   }, [subtitles]);
@@ -57,11 +66,20 @@ const Header = () => {
           duration={1.5}
           delay={1.5}
         />
-        <p
-          className={`text-gray-500 text-2xl font-light transition-opacity duration-600 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+        <motion.div
+          key={current}
+          initial={{ width: 0 }}
+          animate={{ width: isAnimating ? 0 : '100%' }}
+          transition={{
+            duration: 1,
+            ease: 'easeInOut',
+            delay: isFirstRender.current ? 1.5 : 0,
+          }}
+          style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}
+          className="text-gray-500 text-2xl font-light"
         >
           {subtitles[current]}
-        </p>
+        </motion.div>
       </div>
     </div>
   );
