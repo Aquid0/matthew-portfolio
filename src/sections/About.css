@@ -1,0 +1,27 @@
+/* Style for all paths initially */
+.about-section svg path {
+  stroke: black;
+  stroke-width: 1;
+  fill-opacity: 0;
+}
+
+@keyframes drawStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fillIn {
+  to {
+    fill-opacity: 1;
+  }
+}
+/* 
+@keyframes fillIn {
+  from {
+    fill-opacity: 0;
+  }
+  to {
+    fill-opacity: 1;
+  }
+} */
