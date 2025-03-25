@@ -2,6 +2,10 @@
 .about-section svg path {
   stroke: black;
   stroke-width: 1;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  paint-order: fill stroke;
+  fill: black;
   fill-opacity: 0;
 }
 
@@ -16,12 +20,3 @@
     fill-opacity: 1;
   }
 }
-/* 
-@keyframes fillIn {
-  from {
-    fill-opacity: 0;
-  }
-  to {
-    fill-opacity: 1;
-  }
-} */
