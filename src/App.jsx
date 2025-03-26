@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
-import About from './sections/About';
+import About from './sections/About/About';
 import CustomCursor from './components/CustomCursor';
 function App() {
   return (
