@@ -3,12 +3,17 @@ import React, { useEffect } from 'react';
 
 const About = () => {
   useEffect(() => {
+    const svg = document.querySelectorAll('svg');
+
+    svg.forEach((svg) => {
+      if (!svg.classList.contains('focus-lines')) svg.style.opacity = 1;
+    });
+
     // Handling Main SVG animations
     const paths = document.querySelectorAll('svg path');
     paths.forEach((path, index) => {
-      if (path.closest('svg').classList.contains('focus-lines')) {
-        return;
-      }
+      if (path.closest('svg').classList.contains('focus-lines')) return;
+
       const length = path.getTotalLength();
       path.style.strokeDasharray = length;
       path.style.strokeDashoffset = length;

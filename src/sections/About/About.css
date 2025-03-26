@@ -1,3 +1,7 @@
+svg {
+  opacity: 0;
+}
+
 /* Style for all paths initially */
 .about-section svg path {
   stroke: black;
