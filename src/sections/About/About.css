@@ -1,0 +1,40 @@
+/* Style for all paths initially */
+.about-section svg path {
+  stroke: black;
+  fill: black;
+  fill-opacity: 0;
+}
+
+@keyframes drawStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fillIn {
+  to {
+    fill-opacity: 1;
+  }
+}
+
+.focus-lines svg path {
+  stroke: black;
+  stroke-width: 1;
+}
+
+.focus-lines {
+  opacity: 0;
+  transition: 1.5s ease;
+}
+
+@keyframes drawFocusLines {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes unDrawFocusLines {
+  from {
+    stroke-dashoffset: 0;
+  }
+}

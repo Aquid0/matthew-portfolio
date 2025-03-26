@@ -3,8 +3,12 @@ import './About.css';
 
 const About = () => {
   useEffect(() => {
+    // Handling Main SVG animations
     const paths = document.querySelectorAll('svg path');
     paths.forEach((path, index) => {
+      if (path.closest('svg').classList.contains('focus-lines')) {
+        return;
+      }
       const length = path.getTotalLength();
       path.style.strokeDasharray = length;
       path.style.strokeDashoffset = length;
@@ -16,10 +20,61 @@ const About = () => {
         path.style.animation = `drawStroke 3s ease forwards ${delay}s`;
       }
     });
+
+    // Handling Focus Lines SVG animations
+    const link = document.querySelector('.cursor-hover');
+    const focusLines = document.querySelectorAll('.focus-lines path');
+
+    const handleMouseEnter = () => {
+      const lines = document.querySelectorAll('.focus-lines');
+      if (lines.length > 0) {
+        lines.forEach((line) => {
+          line.style.opacity = 1;
+        });
+      }
+
+      focusLines.forEach((path) => {
+        const length = path.getTotalLength();
+        path.style.strokeDasharray = length;
+        path.style.strokeDashoffset = length;
+        path.style.animation = 'drawStroke 1s ease forwards';
+      });
+    };
+
+    const handleMouseLeave = () => {
+      focusLines.forEach((path) => {
+        path.style.animation = 'unDrawFocusLines 1s ease forwards';
+      });
+    };
+
+    link.addEventListener('mouseenter', handleMouseEnter);
+    link.addEventListener('mouseleave', handleMouseLeave);
+
+    // Cleanup event listeners on unmount
+    return () => {
+      link.removeEventListener('mouseenter', handleMouseEnter);
+      link.removeEventListener('mouseleave', handleMouseLeave);
+    };
   }, []);
 
   return (
-    <div className="flex justify-center items-center about-section ml-25 mt-15">
+    <div className="flex justify-center items-center about-section ml-25 relative">
+      <svg
+        width="200"
+        height="200"
+        viewBox="0 0 288 288"
+        fill="none"
+        className="focus-lines absolute -top-15 -left-15 pointer-events-none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0 1H1V288H0V1Z" stroke="black" strokeWidth="1" fill="none" />
+        <path
+          d="M1 1V0L288 0V1H1Z"
+          stroke="black"
+          strokeWidth="1"
+          fill="none"
+        />
+      </svg>
       <a href="#" className="cursor-hover">
         <svg
           width="802"
@@ -182,6 +237,27 @@ const About = () => {
           <path d="M100 170V169H707V170H100Z" fill="black" />
         </svg>
       </a>
+      <svg
+        width="200"
+        height="200"
+        viewBox="0 0 288 288"
+        fill="none"
+        className="focus-lines absolute -bottom-15 -right-15 pointer-events-none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M288 287H287V0H288V287Z"
+          stroke="black"
+          strokeWidth="1"
+          fill="none"
+        />
+        <path
+          d="M287 287V288H0V287H287Z"
+          stroke="black"
+          strokeWidth="1"
+          fill="none"
+        />
+      </svg>
     </div>
   );
 };

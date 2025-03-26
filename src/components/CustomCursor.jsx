@@ -13,30 +13,32 @@ export default function CustomCursor() {
     : baseCircleSize;
   const circleRadius = circleSize / 2;
 
+  const move = (e) => {
+    setPosition({ x: e.clientX, y: e.clientY });
+  };
+
+  const handleMouseOver = (e) => {
+    const target = e.target;
+    if (target.tagName === 'A' || target.closest('.cursor-hover')) {
+      setIsHoveringLink(true);
+    }
+  };
+
+  const handleMouseOut = (e) => {
+    const target = e.target;
+    if (target.tagName === 'A' || target.closest('.cursor-hover')) {
+      setIsHoveringLink(false);
+    }
+  };
+
+  // Apply event listeners on mount
   useEffect(() => {
-    const move = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const handleMouseOver = (e) => {
-      const target = e.target;
-      if (target.tagName === 'A' || target.closest('.cursor-hover')) {
-        setIsHoveringLink(true);
-      }
-    };
-
-    const handleMouseOut = (e) => {
-      const target = e.target;
-      if (target.tagName === 'A' || target.closest('.cursor-hover')) {
-        setIsHoveringLink(false);
-      }
-    };
-
     window.addEventListener('mousemove', move);
     window.addEventListener('mouseover', handleMouseOver);
     window.addEventListener('mouseout', handleMouseOut);
 
     return () => {
+      // Remove event listeners when component unmounts
       window.removeEventListener('mousemove', move);
       window.removeEventListener('mouseover', handleMouseOver);
       window.removeEventListener('mouseout', handleMouseOut);
@@ -49,9 +51,9 @@ export default function CustomCursor() {
       <motion.div
         className="fixed h-px bg-black"
         animate={{
-          top: position.y,
-          left: 0,
-          width: position.x - circleRadius,
+          top: position.y, // Start at same y as cursor
+          left: 0, // Start from left edge of screen
+          width: position.x - circleRadius, // Adjust width based on cursor position
         }}
         transition={springConfig}
       />
@@ -59,9 +61,9 @@ export default function CustomCursor() {
       <motion.div
         className="fixed h-px bg-black"
         animate={{
-          top: position.y,
-          left: position.x + circleRadius,
-          right: 0,
+          top: position.y, // Start at same y as cursor
+          left: position.x + circleRadius, // Start from right edge of cursor
+          right: 0, // End at right edge of screen
         }}
         transition={springConfig}
       />
@@ -97,7 +99,6 @@ export default function CustomCursor() {
         style={{
           width: baseCircleSize,
           height: baseCircleSize,
-          transform: 'translate(-50%, -50%)',
         }}
         transition={springConfig}
       />
