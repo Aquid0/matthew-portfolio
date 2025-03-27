@@ -1,6 +1,6 @@
 import React from 'react';
 import Tilt from 'react-parallax-tilt';
-
+import PropTypes from 'prop-types';
 const AboutPanel = ({ children }) => {
   return (
     <Tilt
@@ -16,6 +16,10 @@ const AboutPanel = ({ children }) => {
       {children}
     </Tilt>
   );
+};
+
+AboutPanel.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default AboutPanel;
