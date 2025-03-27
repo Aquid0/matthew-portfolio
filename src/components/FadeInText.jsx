@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 const FadeInText = ({
   text,
@@ -20,6 +21,15 @@ const FadeInText = ({
       {text}
     </motion.div>
   );
+};
+
+FadeInText.propTypes = {
+  text: PropTypes.string.isRequired,
+  fontSize: PropTypes.string,
+  color: PropTypes.string,
+  fontWeight: PropTypes.string,
+  duration: PropTypes.number,
+  delay: PropTypes.number,
 };
 
 export default FadeInText;

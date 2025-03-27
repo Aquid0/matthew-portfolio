@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import FadeInText from './FadeInText';
 
 const NavBar = () => {
   const [time, setTime] = useState(new Date());
