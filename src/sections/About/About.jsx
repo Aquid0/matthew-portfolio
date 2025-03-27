@@ -1,16 +1,44 @@
 import './About.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import AboutPanel from './AboutPanel';
-
-/* 
-https://stackoverflow.com/questions/72892212/check-if-the-mouse-is-within-an-elements-boundary-in-react - look at this for showPanels
-*/
 
 const About = () => {
   const [showPanels, setShowPanels] = useState(false);
-  console.log(showPanels);
+  const aboutLink = useRef(null);
 
   useEffect(() => {
+    const handleMouseLinkPosition = (e) => {
+      const rect = aboutLink.current?.getBoundingClientRect();
+      if (!rect) return;
+
+      const { clientX: x, clientY: y } = e;
+      const isInside =
+        x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+
+      setShowPanels(isInside);
+
+      // Handling focus line animations
+      const lines = document.querySelectorAll('.focus-lines');
+      const focusLines = document.querySelectorAll('.focus-lines path');
+
+      if (isInside) {
+        lines.forEach((line) => {
+          line.style.opacity = 1;
+        });
+
+        focusLines.forEach((path) => {
+          const length = path.getTotalLength();
+          path.style.strokeDasharray = length;
+          path.style.strokeDashoffset = length;
+          path.style.animation = 'drawStroke 1s ease forwards';
+        });
+      } else {
+        focusLines.forEach((path) => {
+          path.style.animation = 'unDrawFocusLines 1s ease forwards';
+        });
+      }
+    };
+
     const svg = document.querySelectorAll('svg');
 
     svg.forEach((svg) => {
@@ -20,8 +48,6 @@ const About = () => {
     // Handling Main SVG animations
     const paths = document.querySelectorAll('svg path');
     paths.forEach((path, index) => {
-      if (path.closest('svg').classList.contains('focus-lines')) return;
-
       const length = path.getTotalLength();
       path.style.strokeDasharray = length;
       path.style.strokeDashoffset = length;
@@ -34,39 +60,11 @@ const About = () => {
       }
     });
 
-    // Handling Focus Lines SVG animations
-    const link = document.querySelector('.cursor-hover');
-    const focusLines = document.querySelectorAll('.focus-lines path');
-
-    const handleMouseEnter = () => {
-      const lines = document.querySelectorAll('.focus-lines');
-      if (lines.length > 0) {
-        lines.forEach((line) => {
-          line.style.opacity = 1;
-        });
-      }
-
-      focusLines.forEach((path) => {
-        const length = path.getTotalLength();
-        path.style.strokeDasharray = length;
-        path.style.strokeDashoffset = length;
-        path.style.animation = 'drawStroke 1s ease forwards';
-      });
-    };
-
-    const handleMouseLeave = () => {
-      focusLines.forEach((path) => {
-        path.style.animation = 'unDrawFocusLines 1s ease forwards';
-      });
-    };
-
-    link.addEventListener('mouseenter', handleMouseEnter);
-    link.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('mousemove', handleMouseLinkPosition);
 
     // Cleanup event listeners on unmount
     return () => {
-      link.removeEventListener('mouseenter', handleMouseEnter);
-      link.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('mousemove', handleMouseLinkPosition);
     };
   }, []);
 
@@ -89,6 +87,7 @@ const About = () => {
         />
       </svg>
       <a
+        ref={aboutLink}
         href="#"
         className="cursor-hover"
         onMouseEnter={() => setShowPanels(true)}
@@ -276,13 +275,13 @@ const About = () => {
           fill="none"
         />
       </svg>
-      {
+      {showPanels && (
         <>
           <AboutPanel>
             <h1 className="text-2xl font-bold">My name is Matthew La</h1>
           </AboutPanel>
         </>
-      }
+      )}
     </div>
   );
 };
