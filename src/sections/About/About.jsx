@@ -1,7 +1,10 @@
 import './About.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import AboutPanel from './AboutPanel';
 
 const About = () => {
+  const [showPanels, setShowPanels] = useState(false);
+
   useEffect(() => {
     const svg = document.querySelectorAll('svg');
 
@@ -80,7 +83,12 @@ const About = () => {
           fill="none"
         />
       </svg>
-      <a href="#" className="cursor-hover">
+      <a
+        href="#"
+        className="cursor-hover"
+        onMouseEnter={() => setShowPanels(true)}
+        onMouseLeave={() => setShowPanels(false)}
+      >
         <svg
           width="802"
           height="258"
@@ -263,6 +271,13 @@ const About = () => {
           fill="none"
         />
       </svg>
+      {showPanels && (
+        <>
+          <AboutPanel>
+            <h1>My name is Matthew La</h1>
+          </AboutPanel>
+        </>
+      )}
     </div>
   );
 };

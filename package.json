@@ -16,7 +16,8 @@
     "@tailwindcss/vite": "^4.0.15",
     "framer-motion": "^12.5.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-parallax-tilt": "^1.7.287"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.27.0",
