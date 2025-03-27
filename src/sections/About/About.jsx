@@ -2,8 +2,13 @@ import './About.css';
 import React, { useEffect, useState } from 'react';
 import AboutPanel from './AboutPanel';
 
+/* 
+https://stackoverflow.com/questions/72892212/check-if-the-mouse-is-within-an-elements-boundary-in-react - look at this for showPanels
+*/
+
 const About = () => {
   const [showPanels, setShowPanels] = useState(false);
+  console.log(showPanels);
 
   useEffect(() => {
     const svg = document.querySelectorAll('svg');
@@ -271,13 +276,13 @@ const About = () => {
           fill="none"
         />
       </svg>
-      {showPanels && (
+      {
         <>
           <AboutPanel>
-            <h1>My name is Matthew La</h1>
+            <h1 className="text-2xl font-bold">My name is Matthew La</h1>
           </AboutPanel>
         </>
-      )}
+      }
     </div>
   );
 };

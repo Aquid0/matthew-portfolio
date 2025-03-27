@@ -47,6 +47,7 @@ svg {
   position: absolute;
   width: 220px;
   height: 200px;
+  margin: 20;
   background: white;
   border-radius: 12px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
@@ -57,3 +58,13 @@ svg {
   align-items: center;
   justify-content: center;
 }
+
+/* Add this new class */
+/* .tilt-wrapper {
+  pointer-events: none;
+} */
+
+/* Add this to enable pointer events for panel content */
+/* .tilt-content {
+  pointer-events: auto;
+} */
