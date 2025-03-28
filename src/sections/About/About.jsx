@@ -16,36 +16,18 @@ const About = () => {
         x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
 
       setShowPanels(isInside);
-
-      // Handling focus line animations
-      const lines = document.querySelectorAll('.focus-lines');
-      const focusLines = document.querySelectorAll('.focus-lines path');
-
-      if (isInside) {
-        lines.forEach((line) => {
-          line.style.opacity = 1;
-        });
-
-        focusLines.forEach((path) => {
-          const length = path.getTotalLength();
-          path.style.strokeDasharray = length;
-          path.style.strokeDashoffset = length;
-          path.style.animation = 'drawStroke 1s ease forwards';
-        });
-      } else {
-        focusLines.forEach((path) => {
-          path.style.animation = 'unDrawFocusLines 1s ease forwards';
-        });
-      }
     };
 
-    const svg = document.querySelectorAll('svg');
+    window.addEventListener('mousemove', handleMouseLinkPosition);
 
-    svg.forEach((svg) => {
-      if (!svg.classList.contains('focus-lines')) svg.style.opacity = 1;
-    });
+    // Cleanup event listeners on unmount
+    return () => {
+      window.removeEventListener('mousemove', handleMouseLinkPosition);
+    };
+  }, []);
 
-    // Handling Main SVG animations
+  // Handling Main SVG animations
+  useEffect(() => {
     const paths = document.querySelectorAll('svg path');
     paths.forEach((path, index) => {
       const length = path.getTotalLength();
@@ -59,14 +41,30 @@ const About = () => {
         path.style.animation = `drawStroke 3s ease forwards ${delay}s`;
       }
     });
-
-    window.addEventListener('mousemove', handleMouseLinkPosition);
-
-    // Cleanup event listeners on unmount
-    return () => {
-      window.removeEventListener('mousemove', handleMouseLinkPosition);
-    };
   }, []);
+
+  // Handling focus line animations
+  useEffect(() => {
+    const lines = document.querySelectorAll('.focus-lines');
+    const focusLines = document.querySelectorAll('.focus-lines path');
+
+    if (showPanels) {
+      lines.forEach((line) => {
+        line.style.opacity = 1;
+      });
+
+      focusLines.forEach((path) => {
+        const length = path.getTotalLength();
+        path.style.strokeDasharray = length;
+        path.style.strokeDashoffset = length;
+        path.style.animation = 'drawStroke 1s ease forwards';
+      });
+    } else {
+      focusLines.forEach((path) => {
+        path.style.animation = 'unDrawFocusLines 1s ease forwards';
+      });
+    }
+  }, [showPanels]);
 
   return (
     <div className="about-section relative ml-25 flex items-center justify-center">
@@ -86,19 +84,14 @@ const About = () => {
           fill="none"
         />
       </svg>
-      <a
-        ref={aboutLink}
-        href="#"
-        className="cursor-hover"
-        onMouseEnter={() => setShowPanels(true)}
-        onMouseLeave={() => setShowPanels(false)}
-      >
+      <a ref={aboutLink} href="#" className="cursor-hover">
         <svg
           width="802"
           height="258"
           viewBox="0 0 802 258"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="main-svg"
         >
           <path
             className="letter"
