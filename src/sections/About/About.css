@@ -58,13 +58,3 @@ svg {
   align-items: center;
   justify-content: center;
 }
-
-/* Add this new class */
-/* .tilt-wrapper {
-  pointer-events: none;
-} */
-
-/* Add this to enable pointer events for panel content */
-/* .tilt-content {
-  pointer-events: auto;
-} */
