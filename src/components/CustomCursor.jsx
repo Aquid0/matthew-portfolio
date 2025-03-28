@@ -46,7 +46,7 @@ export default function CustomCursor() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[9999]">
+    <div className="pointer-events-none fixed inset-0 z-[9999]">
       {/* Crosshair - Left side */}
       <motion.div
         className="fixed h-px bg-black"
@@ -90,7 +90,7 @@ export default function CustomCursor() {
 
       {/* Circle cursor */}
       <motion.div
-        className={`fixed border-2 rounded-full mix-blend-difference`}
+        className={`fixed rounded-full border-2 mix-blend-difference`}
         animate={{
           x: position.x - baseCircleSize / 2,
           y: position.y - baseCircleSize / 2,

@@ -12,7 +12,7 @@ function App() {
       <NavBar />
       <Header />
 
-      <div className="flex flex-col items-center justify-center mt-40 mr-40">
+      <div className="mt-40 mr-40 flex flex-col items-center justify-center">
         <About />
       </div>
     </div>

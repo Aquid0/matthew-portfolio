@@ -69,13 +69,13 @@ const About = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center about-section ml-25 relative">
+    <div className="about-section relative ml-25 flex items-center justify-center">
       <svg
         width="200"
         height="200"
         viewBox="0 0 288 288"
         fill="none"
-        className="focus-lines absolute -top-15 -left-15 pointer-events-none"
+        className="focus-lines pointer-events-none absolute -top-15 -left-15"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path d="M0 1H1V288H0V1Z" stroke="black" strokeWidth="1" fill="none" />
@@ -259,7 +259,7 @@ const About = () => {
         height="200"
         viewBox="0 0 288 288"
         fill="none"
-        className="focus-lines absolute -bottom-15 -right-15 pointer-events-none"
+        className="focus-lines pointer-events-none absolute -right-15 -bottom-15"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
