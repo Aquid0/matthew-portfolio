@@ -277,9 +277,7 @@ const About = () => {
       </svg>
       {showPanels && (
         <>
-          <AboutMePanel>
-            <h1 className="text-2xl font-bold">My name is Matthew La</h1>
-          </AboutMePanel>
+          <AboutMePanel />
         </>
       )}
     </div>
