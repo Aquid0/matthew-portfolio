@@ -1,6 +1,6 @@
 import './About.css';
 import React, { useEffect, useState, useRef } from 'react';
-import AboutPanel from './AboutPanel';
+import AboutMePanel from './AboutMePanel';
 
 const About = () => {
   const [showPanels, setShowPanels] = useState(false);
@@ -36,9 +36,16 @@ const About = () => {
       const delay = index * 0.025;
 
       if (path.classList.contains('letter')) {
-        path.style.animation = `drawStroke 3s ease forwards ${delay}s, fillIn 3s ease forwards ${delay + 0.25}s`;
+        path.style.animation = `
+          drawStroke 3s ease forwards ${delay}s,
+          fillIn 3s ease forwards ${delay + 0.25}s, 
+          fadeIn 0.1s ease forwards 
+        `; // Added fadeIn animation to fix flickering
       } else {
-        path.style.animation = `drawStroke 3s ease forwards ${delay}s`;
+        path.style.animation = `
+          drawStroke 3s ease forwards ${delay}s,
+          fadeIn 0.1s ease forwards
+        `; // Added fadeIn animation to fix flickering
       }
     });
   }, []);
@@ -270,9 +277,9 @@ const About = () => {
       </svg>
       {showPanels && (
         <>
-          <AboutPanel>
+          <AboutMePanel>
             <h1 className="text-2xl font-bold">My name is Matthew La</h1>
-          </AboutPanel>
+          </AboutMePanel>
         </>
       )}
     </div>

@@ -2,16 +2,13 @@ import React from 'react';
 import Tilt from 'react-parallax-tilt';
 import PropTypes from 'prop-types';
 
-const AboutPanel = ({ children }) => {
+const AboutMePanel = ({ children }) => {
   return (
     <Tilt
       className="about-panel"
-      perspective={1000}
+      perspective={200}
       tiltReverse={true}
-      tiltMaxAngleX={15}
-      tiltMaxAngleY={15}
-      transitionSpeed={1500}
-      scale={1.02}
+      trackOnWindow={true}
       gyroscope={true}
     >
       {children}
@@ -19,8 +16,8 @@ const AboutPanel = ({ children }) => {
   );
 };
 
-AboutPanel.propTypes = {
+AboutMePanel.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default AboutPanel;
+export default AboutMePanel;

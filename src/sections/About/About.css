@@ -21,6 +21,15 @@ svg {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .focus-lines svg path {
   stroke: black;
   stroke-width: 1;
@@ -61,4 +70,12 @@ svg {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.main-svg path {
+  opacity: 0;
+}
+
+.main-svg path.letter {
+  fill-opacity: 0;
 }
