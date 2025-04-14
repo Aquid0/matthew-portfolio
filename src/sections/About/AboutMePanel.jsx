@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 const AboutMePanel = () => {
   return (
     <Tilt
-      className="bg-white-standard absolute z-50 h-25 w-125 border-2 border-black p-2"
-      perspective={200}
+      className="bg-white-standard z-50 h-25 w-125 border-2 border-black p-2"
+      perspective={350}
       tiltReverse={true}
       trackOnWindow={true}
-      gyroscope={true}
     >
       <h1 className=" ">My name is Matthew La</h1>
     </Tilt>

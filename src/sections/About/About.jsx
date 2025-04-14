@@ -30,22 +30,24 @@ const About = () => {
   useEffect(() => {
     const paths = document.querySelectorAll('svg path');
     paths.forEach((path, index) => {
-      const length = path.getTotalLength();
-      path.style.strokeDasharray = length;
-      path.style.strokeDashoffset = length;
-      const delay = index * 0.025;
+      if (path instanceof SVGPathElement) {
+        const length = path.getTotalLength();
+        path.style.strokeDasharray = length.toString();
+        path.style.strokeDashoffset = length.toString();
+        const delay = index * 0.025;
 
-      if (path.classList.contains('letter')) {
-        path.style.animation = `
+        if (path.classList.contains('letter')) {
+          path.style.animation = `
           drawStroke 3s ease forwards ${delay}s,
           fillIn 3s ease forwards ${delay + 0.25}s, 
           fadeIn 0.1s ease forwards 
         `; // Added fadeIn animation to fix flickering
-      } else {
-        path.style.animation = `
+        } else {
+          path.style.animation = `
           drawStroke 3s ease forwards ${delay}s,
           fadeIn 0.1s ease forwards
-        `; // Added fadeIn animation to fix flickering
+          `; // Added fadeIn animation to fix flickering
+        }
       }
     });
   }, []);
@@ -57,18 +59,24 @@ const About = () => {
 
     if (showPanels) {
       lines.forEach((line) => {
-        line.style.opacity = 1;
+        if (line instanceof SVGPathElement) {
+          line.style.opacity = '1';
+        }
       });
 
       focusLines.forEach((path) => {
-        const length = path.getTotalLength();
-        path.style.strokeDasharray = length;
-        path.style.strokeDashoffset = length;
-        path.style.animation = 'drawStroke 1s ease forwards';
+        if (path instanceof SVGPathElement) {
+          const length = path.getTotalLength();
+          path.style.strokeDasharray = length.toString();
+          path.style.strokeDashoffset = length.toString();
+          path.style.animation = 'drawStroke 1s ease forwards';
+        }
       });
     } else {
       focusLines.forEach((path) => {
-        path.style.animation = 'unDrawFocusLines 1s ease forwards';
+        if (path instanceof SVGPathElement) {
+          path.style.animation = 'unDrawFocusLines 1s ease forwards';
+        }
       });
     }
   }, [showPanels]);
@@ -277,7 +285,14 @@ const About = () => {
       </svg>
       {showPanels && (
         <>
-          <AboutMePanel />
+          <div className="absolute top-0 -left-20 flex justify-center gap-10">
+            <div>
+              <AboutMePanel />
+              <AboutMePanel />
+            </div>
+
+            <AboutMePanel />
+          </div>
         </>
       )}
     </div>
